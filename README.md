@@ -1,8 +1,12 @@
-# Pikachu Collection Dashboard
+# Collection Dashboard
 
-A static GitHub Pages dashboard for tracking English Pikachu TCG cards against the community **Priced Pikachu Checklist**.
+A static GitHub Pages site for tracking three collections from one homepage:
 
-Owned cards are read from `data/owned.csv`. That file is initialized and currently empty — no cards are marked owned yet.
+1. **Pikachu cards** — English priced Pikachu TCG checklist
+2. **Vintage games** — mainline Pokémon games from Game Boy onward (including remakes)
+3. **Vintage consoles** — Nintendo home, hybrid, and handheld systems sold in the US
+
+Ownership for each section is read from its own CSV. Those owned files are initialized empty — nothing is marked collected yet.
 
 ## Enable GitHub Pages
 
@@ -12,33 +16,50 @@ Owned cards are read from `data/owned.csv`. That file is initialized and current
 4. Choose branch `main` (or your default) and folder `/ (root)`.
 5. Save, then open the published site URL (usually `https://<user>.github.io/<repo>/`).
 
-## Mark cards as owned
+## Site map
 
-1. Browse the dashboard and note the card `id` under each entry (for example `pk-0001`).
-2. Edit `data/owned.csv` and add one row per owned card:
+| Path | Section |
+| --- | --- |
+| `/` | Homepage with links into each checklist |
+| `/pikachu/` | Pikachu card dashboard |
+| `/games/` | Mainline Pokémon games dashboard |
+| `/consoles/` | US Nintendo consoles dashboard |
+
+## Mark items as owned
+
+Browse a section, note the item `id`, then add a row to that section’s owned CSV:
 
 ```csv
 id,notes
 pk-0001,Binder page 1
-pk-0012,
 ```
 
-3. Commit and push. After Pages rebuilds, those cards show as **Owned**.
+```csv
+id,notes
+gm-0001,CIB
+```
 
-`notes` is optional and appears on the card when present.
+```csv
+id,notes
+nc-0012,Original DMG
+```
+
+Commit and push. After Pages rebuilds, those items show as **Owned**.
 
 ## Data files
 
 | File | Purpose |
 | --- | --- |
-| `data/checklist.csv` | Full priced checklist (id, set, edition, year, remarks, rarity, artwork, price, image) |
-| `data/owned.csv` | Collection ownership list (start empty; add `id` values as you collect) |
+| `data/pikachu/checklist.csv` | Priced English Pikachu card checklist |
+| `data/pikachu/owned.csv` | Owned Pikachu card ids (empty to start) |
+| `data/games/checklist.csv` | Mainline Pokémon games checklist |
+| `data/games/owned.csv` | Owned game ids (empty to start) |
+| `data/consoles/checklist.csv` | US Nintendo consoles checklist |
+| `data/consoles/owned.csv` | Owned console ids (empty to start) |
 
-Checklist source: [Ultimate English Pikachu Checklist (Elite Fourum)](https://www.elitefourum.com/t/ultimate-english-pikachu-checklist-w-pictures-prices-free-to-use/61249).
+Pikachu checklist source: [Ultimate English Pikachu Checklist (Elite Fourum)](https://www.elitefourum.com/t/ultimate-english-pikachu-checklist-w-pictures-prices-free-to-use/61249).
 
 ## Local preview
-
-Because the app loads CSV over `fetch`, open it through a local static server rather than a `file://` URL:
 
 ```bash
 python3 -m http.server 8080

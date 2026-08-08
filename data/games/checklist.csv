@@ -1,0 +1,39 @@
+id,title,platform,generation,year,kind,notes
+gm-0001,Pokémon Red,Game Boy,1,1998,Original,US release
+gm-0002,Pokémon Blue,Game Boy,1,1998,Original,US release
+gm-0003,Pokémon Yellow,Game Boy,1,1999,Original,Special Pikachu Edition
+gm-0004,Pokémon Gold,Game Boy Color,2,2000,Original,
+gm-0005,Pokémon Silver,Game Boy Color,2,2000,Original,
+gm-0006,Pokémon Crystal,Game Boy Color,2,2001,Original,
+gm-0007,Pokémon Ruby,Game Boy Advance,3,2003,Original,
+gm-0008,Pokémon Sapphire,Game Boy Advance,3,2003,Original,
+gm-0009,Pokémon FireRed,Game Boy Advance,3,2004,Remake,Remake of Red
+gm-0010,Pokémon LeafGreen,Game Boy Advance,3,2004,Remake,Remake of Blue/Green
+gm-0011,Pokémon Emerald,Game Boy Advance,3,2005,Original,
+gm-0012,Pokémon Diamond,Nintendo DS,4,2007,Original,
+gm-0013,Pokémon Pearl,Nintendo DS,4,2007,Original,
+gm-0014,Pokémon Platinum,Nintendo DS,4,2009,Original,
+gm-0015,Pokémon HeartGold,Nintendo DS,4,2010,Remake,Remake of Gold
+gm-0016,Pokémon SoulSilver,Nintendo DS,4,2010,Remake,Remake of Silver
+gm-0017,Pokémon Black,Nintendo DS,5,2011,Original,
+gm-0018,Pokémon White,Nintendo DS,5,2011,Original,
+gm-0019,Pokémon Black 2,Nintendo DS,5,2012,Original,
+gm-0020,Pokémon White 2,Nintendo DS,5,2012,Original,
+gm-0021,Pokémon X,Nintendo 3DS,6,2013,Original,
+gm-0022,Pokémon Y,Nintendo 3DS,6,2013,Original,
+gm-0023,Pokémon Omega Ruby,Nintendo 3DS,6,2014,Remake,Remake of Ruby
+gm-0024,Pokémon Alpha Sapphire,Nintendo 3DS,6,2014,Remake,Remake of Sapphire
+gm-0025,Pokémon Sun,Nintendo 3DS,7,2016,Original,
+gm-0026,Pokémon Moon,Nintendo 3DS,7,2016,Original,
+gm-0027,Pokémon Ultra Sun,Nintendo 3DS,7,2017,Original,
+gm-0028,Pokémon Ultra Moon,Nintendo 3DS,7,2017,Original,
+gm-0029,"Pokémon: Let's Go, Pikachu!",Nintendo Switch,7,2018,Remake,Reimagining of Yellow
+gm-0030,"Pokémon: Let's Go, Eevee!",Nintendo Switch,7,2018,Remake,Reimagining of Yellow
+gm-0031,Pokémon Sword,Nintendo Switch,8,2019,Original,
+gm-0032,Pokémon Shield,Nintendo Switch,8,2019,Original,
+gm-0033,Pokémon Brilliant Diamond,Nintendo Switch,8,2021,Remake,Remake of Diamond
+gm-0034,Pokémon Shining Pearl,Nintendo Switch,8,2021,Remake,Remake of Pearl
+gm-0035,Pokémon Legends: Arceus,Nintendo Switch,8,2022,Original,Main-series Legends title
+gm-0036,Pokémon Scarlet,Nintendo Switch,9,2022,Original,
+gm-0037,Pokémon Violet,Nintendo Switch,9,2022,Original,
+gm-0038,Pokémon Legends: Z-A,Nintendo Switch,9,2025,Original,Main-series Legends title
