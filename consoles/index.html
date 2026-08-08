@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vintage Consoles — Collection</title>
+    <meta
+      name="description"
+      content="Track Nintendo home, hybrid, and handheld consoles sold in the United States."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="theme-consoles">
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div data-site-nav></div>
+
+    <header class="site-header">
+      <div class="brand-block">
+        <p class="brand">Vintage Consoles</p>
+        <h1>Nintendo hardware</h1>
+        <p class="lede">
+          Nintendo home, hybrid, and handheld systems sold in the US — including major
+          revisions. Owned status loads from <code>data/consoles/owned.csv</code>.
+        </p>
+      </div>
+
+      <div class="progress-panel" aria-live="polite">
+        <div class="progress-meta">
+          <span id="progress-label">0 / 0 collected</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          id="progress-bar"
+        >
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="stat-row stats-2">
+          <div class="stat">
+            <span class="stat-value" id="stat-owned">0</span>
+            <span class="stat-label">Owned</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="stat-missing">0</span>
+            <span class="stat-label">Missing</span>
+          </div>
+          <div class="stat hidden" id="value-stat">
+            <span class="stat-value" id="stat-value">$0</span>
+            <span class="stat-label">Owned value</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls controls-6" aria-label="Filters">
+      <label class="control search">
+        <span>Search</span>
+        <input id="search-input" type="search" placeholder="Name, family, notes…" autocomplete="off" />
+      </label>
+      <label class="control">
+        <span>Status</span>
+        <select id="status-filter">
+          <option value="all">All consoles</option>
+          <option value="owned">Owned</option>
+          <option value="missing">Missing</option>
+        </select>
+      </label>
+      <label class="control">
+        <span>Form</span>
+        <select id="form-filter"><option value="all">All forms</option></select>
+      </label>
+      <label class="control">
+        <span>Family</span>
+        <select id="family-filter"><option value="all">All families</option></select>
+      </label>
+      <label class="control">
+        <span>Year</span>
+        <select id="year-filter"><option value="all">All years</option></select>
+      </label>
+      <label class="control">
+        <span>Sort</span>
+        <select id="sort-select"></select>
+      </label>
+    </section>
+
+    <p class="results-count" id="results-count">Loading checklist…</p>
+
+    <main>
+      <div class="card-grid card-grid-wide" id="item-grid"></div>
+      <p class="empty-state hidden" id="empty-state">No consoles match these filters.</p>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        US Nintendo hardware checklist (home, hybrid, and handheld). Japan-only systems
+        are omitted. Mark ownership in <code>data/consoles/owned.csv</code>.
+      </p>
+    </footer>
+
+    <script type="module">
+      import { mountSiteNav } from "../js/site-nav.js";
+      import "../js/consoles.js";
+      mountSiteNav({ active: "consoles" });
+    </script>
+  </body>
+</html>

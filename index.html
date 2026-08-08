@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pikachu Collection Dashboard</title>
+    <title>Collection — Home</title>
     <meta
       name="description"
-      content="Track English Pikachu Pokémon TCG cards against the priced checklist."
+      content="Track Pikachu cards, mainline Pokémon games, and Nintendo consoles from one collection dashboard."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,111 +16,36 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body>
-    <div class="atmosphere" aria-hidden="true"></div>
+  <body class="theme-home page-home">
+    <div class="home-hero-bg" aria-hidden="true">
+      <img
+        src="https://images.pokemontcg.io/base1/58_hires.png"
+        alt=""
+        class="home-hero-image"
+      />
+    </div>
 
-    <header class="site-header">
-      <div class="brand-block">
-        <p class="brand">Pikachu Collection</p>
-        <h1>Checklist Dashboard</h1>
+    <div data-site-nav></div>
+
+    <section class="home-hero">
+      <div class="home-hero-copy">
+        <p class="brand home-brand">Collection</p>
+        <h1>Three checklists. One place to track them.</h1>
         <p class="lede">
-          English Pikachu cards from the priced checklist. Owned status loads from
-          <code>data/owned.csv</code>.
+          Jump into Pikachu cards, mainline Pokémon games, or US Nintendo consoles —
+          each section reads ownership from its own CSV.
         </p>
-      </div>
-
-      <div class="progress-panel" aria-live="polite">
-        <div class="progress-meta">
-          <span id="progress-label">0 / 0 collected</span>
-          <span id="progress-pct">0%</span>
-        </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar">
-          <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <div class="stat-row">
-          <div class="stat">
-            <span class="stat-value" id="stat-owned">0</span>
-            <span class="stat-label">Owned</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value" id="stat-missing">0</span>
-            <span class="stat-label">Missing</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value" id="stat-value">$0</span>
-            <span class="stat-label">Owned value</span>
-          </div>
+        <div class="home-cta-group">
+          <a class="home-cta" href="./pikachu/">Pikachu cards</a>
+          <a class="home-cta" href="./games/">Vintage games</a>
+          <a class="home-cta" href="./consoles/">Vintage consoles</a>
         </div>
       </div>
-    </header>
-
-    <section class="controls" aria-label="Filters">
-      <label class="control search">
-        <span>Search</span>
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Set, rarity, remarks…"
-          autocomplete="off"
-        />
-      </label>
-
-      <label class="control">
-        <span>Status</span>
-        <select id="status-filter">
-          <option value="all">All cards</option>
-          <option value="owned">Owned</option>
-          <option value="missing">Missing</option>
-        </select>
-      </label>
-
-      <label class="control">
-        <span>Year</span>
-        <select id="year-filter">
-          <option value="all">All years</option>
-        </select>
-      </label>
-
-      <label class="control">
-        <span>Rarity</span>
-        <select id="rarity-filter">
-          <option value="all">All rarities</option>
-        </select>
-      </label>
-
-      <label class="control">
-        <span>Sort</span>
-        <select id="sort-select">
-          <option value="checklist">Checklist order</option>
-          <option value="price-desc">Price: high to low</option>
-          <option value="price-asc">Price: low to high</option>
-          <option value="year-desc">Year: newest</option>
-          <option value="year-asc">Year: oldest</option>
-          <option value="set">Set name</option>
-        </select>
-      </label>
     </section>
 
-    <p class="results-count" id="results-count">Loading checklist…</p>
-
-    <main>
-      <div class="card-grid" id="card-grid"></div>
-      <p class="empty-state hidden" id="empty-state">No cards match these filters.</p>
-    </main>
-
-    <footer class="site-footer">
-      <p>
-        Checklist data adapted from the community
-        <a
-          href="https://www.elitefourum.com/t/ultimate-english-pikachu-checklist-w-pictures-prices-free-to-use/61249"
-          rel="noopener noreferrer"
-          >Priced Pikachu Checklist</a
-        >.
-        Mark ownership by adding card <code>id</code> values to
-        <code>data/owned.csv</code>, then push to update GitHub Pages.
-      </p>
-    </footer>
-
-    <script type="module" src="./js/app.js"></script>
+    <script type="module">
+      import { mountSiteNav } from "./js/site-nav.js";
+      mountSiteNav({ active: "home", root: true });
+    </script>
   </body>
 </html>
