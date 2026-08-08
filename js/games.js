@@ -7,7 +7,7 @@ createCollectionApp({
   titleField: "title",
   searchFields: ["title", "platform", "generation", "year", "kind", "notes"],
   showOwnedValue: false,
-  mediaClass: "media-wide",
+  mediaClass: "media-boxart",
   filters: [
     { id: "platform-filter", key: "platform", allLabel: "All platforms", sort: "alpha" },
     { id: "generation-filter", key: "generation", allLabel: "All generations", sort: "numeric-desc" },

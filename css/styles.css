@@ -373,6 +373,16 @@ main,
   aspect-ratio: 16 / 10;
 }
 
+.card-media.media-boxart {
+  aspect-ratio: 3 / 4;
+}
+
+.card-media.media-boxart img,
+.card-media.media-wide img {
+  object-fit: contain;
+  background: color-mix(in srgb, var(--paper-deep) 70%, #fff);
+}
+
 .card-media img {
   width: 100%;
   height: 100%;

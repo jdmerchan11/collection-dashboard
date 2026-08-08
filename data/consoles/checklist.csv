@@ -1,28 +1,28 @@
-id,name,family,form,year,notes
-nc-0001,Nintendo Entertainment System,NES,Home,1985,NES-001
-nc-0002,Super Nintendo Entertainment System,SNES,Home,1991,SNS-001
-nc-0003,Virtual Boy,Virtual Boy,Home,1995,Tabletop stereoscopic system
-nc-0004,Nintendo 64,Nintendo 64,Home,1996,
-nc-0005,GameCube,GameCube,Home,2001,
-nc-0006,Wii,Wii,Home,2006,
-nc-0007,Wii U,Wii U,Home,2012,
-nc-0008,Nintendo Switch,Switch,Hybrid,2017,Original Switch model
-nc-0009,Nintendo Switch Lite,Switch,Hybrid,2019,Handheld-focused Switch
-nc-0010,Nintendo Switch – OLED Model,Switch,Hybrid,2021,OLED revision
-nc-0011,Nintendo Switch 2,Switch 2,Hybrid,2025,
-nc-0012,Game Boy,Game Boy,Handheld,1989,Original DMG
-nc-0013,Game Boy Pocket,Game Boy,Handheld,1996,
-nc-0014,Game Boy Color,Game Boy,Handheld,1998,
-nc-0015,Game Boy Advance,Game Boy Advance,Handheld,2001,
-nc-0016,Game Boy Advance SP,Game Boy Advance,Handheld,2003,
-nc-0017,Game Boy Micro,Game Boy Advance,Handheld,2005,
-nc-0018,Nintendo DS,Nintendo DS,Handheld,2004,Original DS (phat)
-nc-0019,Nintendo DS Lite,Nintendo DS,Handheld,2006,
-nc-0020,Nintendo DSi,Nintendo DS,Handheld,2009,
-nc-0021,Nintendo DSi XL,Nintendo DS,Handheld,2010,
-nc-0022,Nintendo 3DS,Nintendo 3DS,Handheld,2011,
-nc-0023,Nintendo 3DS XL,Nintendo 3DS,Handheld,2012,
-nc-0024,Nintendo 2DS,Nintendo 3DS,Handheld,2013,
-nc-0025,New Nintendo 3DS,Nintendo 3DS,Handheld,2015,Limited US retail release
-nc-0026,New Nintendo 3DS XL,Nintendo 3DS,Handheld,2015,
-nc-0027,New Nintendo 2DS XL,Nintendo 3DS,Handheld,2017,
+id,name,family,form,year,notes,image_url
+nc-0001,Nintendo Entertainment System,NES,Home,1985,NES-001,https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/960px-NES-Console-Set.jpg
+nc-0002,Super Nintendo Entertainment System,SNES,Home,1991,SNS-001,https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/SNES-Mod1-Console-Set.jpg/960px-SNES-Mod1-Console-Set.jpg
+nc-0003,Virtual Boy,Virtual Boy,Home,1995,Tabletop stereoscopic system,https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Virtual-Boy-Set.jpg/960px-Virtual-Boy-Set.jpg
+nc-0004,Nintendo 64,Nintendo 64,Home,1996,,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Nintendo-64-wController-L.jpg/960px-Nintendo-64-wController-L.jpg
+nc-0005,GameCube,GameCube,Home,2001,,https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/GameCube-Set.jpg/960px-GameCube-Set.jpg
+nc-0006,Wii,Wii,Home,2006,,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Wii-Console.png/960px-Wii-Console.png
+nc-0007,Wii U,Wii U,Home,2012,,https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Wii_U_Console_and_Gamepad.png/960px-Wii_U_Console_and_Gamepad.png
+nc-0008,Nintendo Switch,Switch,Hybrid,2017,Original Switch model,https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Nintendo-Switch-Console-Docked-wJoyConRB.jpg/960px-Nintendo-Switch-Console-Docked-wJoyConRB.jpg
+nc-0009,Nintendo Switch Lite,Switch,Hybrid,2019,Handheld-focused Switch,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Nintendo_Switch_Lite_Grey_-_01.jpg/960px-Nintendo_Switch_Lite_Grey_-_01.jpg
+nc-0010,Nintendo Switch – OLED Model,Switch,Hybrid,2021,OLED revision,https://upload.wikimedia.org/wikipedia/commons/9/96/Nintendo-Switch-OLED-Docked.jpg
+nc-0011,Nintendo Switch 2,Switch 2,Hybrid,2025,,https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Nintendo_Switch_2.jpg/960px-Nintendo_Switch_2.jpg
+nc-0012,Game Boy,Game Boy,Handheld,1989,Original DMG,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Game-Boy-FL.jpg/960px-Game-Boy-FL.jpg
+nc-0013,Game Boy Pocket,Game Boy,Handheld,1996,,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Game-Boy-Pocket-FL.jpg/960px-Game-Boy-Pocket-FL.jpg
+nc-0014,Game Boy Color,Game Boy,Handheld,1998,,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Game-Boy-Color-Purple.jpg/960px-Game-Boy-Color-Purple.jpg
+nc-0015,Game Boy Advance,Game Boy Advance,Handheld,2001,,https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Nintendo-Game-Boy-Advance-Purple-FL.jpg/960px-Nintendo-Game-Boy-Advance-Purple-FL.jpg
+nc-0016,Game Boy Advance SP,Game Boy Advance,Handheld,2003,,https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Game-Boy-Advance-SP-Mk1-Blue.png/960px-Game-Boy-Advance-SP-Mk1-Blue.png
+nc-0017,Game Boy Micro,Game Boy Advance,Handheld,2005,,https://upload.wikimedia.org/wikipedia/commons/8/8a/Game_Boy_Micro.jpg
+nc-0018,Nintendo DS,Nintendo DS,Handheld,2004,Original DS (phat),https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Nintendo-DS-Fat-Blue.jpg/960px-Nintendo-DS-Fat-Blue.jpg
+nc-0019,Nintendo DS Lite,Nintendo DS,Handheld,2006,,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Nintendo-DS-Lite-Black-Open.jpg/960px-Nintendo-DS-Lite-Black-Open.jpg
+nc-0020,Nintendo DSi,Nintendo DS,Handheld,2009,,https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Nintendo-DSi-Bl-Open.jpg/960px-Nintendo-DSi-Bl-Open.jpg
+nc-0021,Nintendo DSi XL,Nintendo DS,Handheld,2010,,https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Nintendo-DSi-XL-Burg.jpg/960px-Nintendo-DSi-XL-Burg.jpg
+nc-0022,Nintendo 3DS,Nintendo 3DS,Handheld,2011,,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Nintendo-3DS-AquaOpen.jpg/960px-Nintendo-3DS-AquaOpen.jpg
+nc-0023,Nintendo 3DS XL,Nintendo 3DS,Handheld,2012,,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Nintendo-3DS-XL-angled.jpg/960px-Nintendo-3DS-XL-angled.jpg
+nc-0024,Nintendo 2DS,Nintendo 3DS,Handheld,2013,,https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Nintendo-2DS-angle.jpg/960px-Nintendo-2DS-angle.jpg
+nc-0025,New Nintendo 3DS,Nintendo 3DS,Handheld,2015,Limited US retail release,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/New_Nintendo_3DS_black.jpeg/960px-New_Nintendo_3DS_black.jpeg
+nc-0026,New Nintendo 3DS XL,Nintendo 3DS,Handheld,2015,,https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/New_Nintendo_3DS_XL_-_open.jpg/960px-New_Nintendo_3DS_XL_-_open.jpg
+nc-0027,New Nintendo 2DS XL,Nintendo 3DS,Handheld,2017,,https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/New_Nintendo_2DS_XL_open.jpg/960px-New_Nintendo_2DS_XL_open.jpg
