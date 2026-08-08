@@ -1,39 +1,39 @@
-id,title,platform,generation,year,kind,notes
-gm-0001,Pokémon Red,Game Boy,1,1998,Original,US release
-gm-0002,Pokémon Blue,Game Boy,1,1998,Original,US release
-gm-0003,Pokémon Yellow,Game Boy,1,1999,Original,Special Pikachu Edition
-gm-0004,Pokémon Gold,Game Boy Color,2,2000,Original,
-gm-0005,Pokémon Silver,Game Boy Color,2,2000,Original,
-gm-0006,Pokémon Crystal,Game Boy Color,2,2001,Original,
-gm-0007,Pokémon Ruby,Game Boy Advance,3,2003,Original,
-gm-0008,Pokémon Sapphire,Game Boy Advance,3,2003,Original,
-gm-0009,Pokémon FireRed,Game Boy Advance,3,2004,Remake,Remake of Red
-gm-0010,Pokémon LeafGreen,Game Boy Advance,3,2004,Remake,Remake of Blue/Green
-gm-0011,Pokémon Emerald,Game Boy Advance,3,2005,Original,
-gm-0012,Pokémon Diamond,Nintendo DS,4,2007,Original,
-gm-0013,Pokémon Pearl,Nintendo DS,4,2007,Original,
-gm-0014,Pokémon Platinum,Nintendo DS,4,2009,Original,
-gm-0015,Pokémon HeartGold,Nintendo DS,4,2010,Remake,Remake of Gold
-gm-0016,Pokémon SoulSilver,Nintendo DS,4,2010,Remake,Remake of Silver
-gm-0017,Pokémon Black,Nintendo DS,5,2011,Original,
-gm-0018,Pokémon White,Nintendo DS,5,2011,Original,
-gm-0019,Pokémon Black 2,Nintendo DS,5,2012,Original,
-gm-0020,Pokémon White 2,Nintendo DS,5,2012,Original,
-gm-0021,Pokémon X,Nintendo 3DS,6,2013,Original,
-gm-0022,Pokémon Y,Nintendo 3DS,6,2013,Original,
-gm-0023,Pokémon Omega Ruby,Nintendo 3DS,6,2014,Remake,Remake of Ruby
-gm-0024,Pokémon Alpha Sapphire,Nintendo 3DS,6,2014,Remake,Remake of Sapphire
-gm-0025,Pokémon Sun,Nintendo 3DS,7,2016,Original,
-gm-0026,Pokémon Moon,Nintendo 3DS,7,2016,Original,
-gm-0027,Pokémon Ultra Sun,Nintendo 3DS,7,2017,Original,
-gm-0028,Pokémon Ultra Moon,Nintendo 3DS,7,2017,Original,
-gm-0029,"Pokémon: Let's Go, Pikachu!",Nintendo Switch,7,2018,Remake,Reimagining of Yellow
-gm-0030,"Pokémon: Let's Go, Eevee!",Nintendo Switch,7,2018,Remake,Reimagining of Yellow
-gm-0031,Pokémon Sword,Nintendo Switch,8,2019,Original,
-gm-0032,Pokémon Shield,Nintendo Switch,8,2019,Original,
-gm-0033,Pokémon Brilliant Diamond,Nintendo Switch,8,2021,Remake,Remake of Diamond
-gm-0034,Pokémon Shining Pearl,Nintendo Switch,8,2021,Remake,Remake of Pearl
-gm-0035,Pokémon Legends: Arceus,Nintendo Switch,8,2022,Original,Main-series Legends title
-gm-0036,Pokémon Scarlet,Nintendo Switch,9,2022,Original,
-gm-0037,Pokémon Violet,Nintendo Switch,9,2022,Original,
-gm-0038,Pokémon Legends: Z-A,Nintendo Switch,9,2025,Original,Main-series Legends title
+id,title,platform,generation,year,kind,notes,image_url
+gm-0001,Pokémon Red,Game Boy,1,1998,Original,US release,https://archives.bulbagarden.net/media/upload/8/80/Red_EN_boxart.png
+gm-0002,Pokémon Blue,Game Boy,1,1998,Original,US release,https://archives.bulbagarden.net/media/upload/5/5a/Blue_EN_boxart.png
+gm-0003,Pokémon Yellow,Game Boy,1,1999,Original,Special Pikachu Edition,https://archives.bulbagarden.net/media/upload/9/95/Yellow_EN_boxart.png
+gm-0004,Pokémon Gold,Game Boy Color,2,2000,Original,,https://archives.bulbagarden.net/media/upload/c/c7/Gold_EN_boxart.png
+gm-0005,Pokémon Silver,Game Boy Color,2,2000,Original,,https://archives.bulbagarden.net/media/upload/f/f5/Silver_EN_boxart.png
+gm-0006,Pokémon Crystal,Game Boy Color,2,2001,Original,,https://archives.bulbagarden.net/media/upload/6/60/Crystal_EN_boxart.png
+gm-0007,Pokémon Ruby,Game Boy Advance,3,2003,Original,,https://archives.bulbagarden.net/media/upload/5/5f/Ruby_EN_boxart.png
+gm-0008,Pokémon Sapphire,Game Boy Advance,3,2003,Original,,https://archives.bulbagarden.net/media/upload/6/62/Sapphire_EN_boxart.png
+gm-0009,Pokémon FireRed,Game Boy Advance,3,2004,Remake,Remake of Red,https://archives.bulbagarden.net/media/upload/4/43/FireRed_EN_boxart.png
+gm-0010,Pokémon LeafGreen,Game Boy Advance,3,2004,Remake,Remake of Blue/Green,https://archives.bulbagarden.net/media/upload/d/d7/LeafGreen_EN_boxart.png
+gm-0011,Pokémon Emerald,Game Boy Advance,3,2005,Original,,https://archives.bulbagarden.net/media/upload/6/65/Emerald_EN_boxart.jpg
+gm-0012,Pokémon Diamond,Nintendo DS,4,2007,Original,,https://archives.bulbagarden.net/media/upload/6/69/Diamond_EN_boxart.jpg
+gm-0013,Pokémon Pearl,Nintendo DS,4,2007,Original,,https://archives.bulbagarden.net/media/upload/a/af/Pearl_EN_boxart.jpg
+gm-0014,Pokémon Platinum,Nintendo DS,4,2009,Original,,https://archives.bulbagarden.net/media/upload/8/83/Platinum_EN_boxart.png
+gm-0015,Pokémon HeartGold,Nintendo DS,4,2010,Remake,Remake of Gold,https://archives.bulbagarden.net/media/upload/6/6e/HeartGold_EN_boxart.jpg
+gm-0016,Pokémon SoulSilver,Nintendo DS,4,2010,Remake,Remake of Silver,https://archives.bulbagarden.net/media/upload/5/5c/SoulSilver_EN_boxart.jpg
+gm-0017,Pokémon Black,Nintendo DS,5,2011,Original,,https://archives.bulbagarden.net/media/upload/d/dc/Black_EN_boxart.png
+gm-0018,Pokémon White,Nintendo DS,5,2011,Original,,https://archives.bulbagarden.net/media/upload/0/08/White_EN_boxart.png
+gm-0019,Pokémon Black 2,Nintendo DS,5,2012,Original,,https://archives.bulbagarden.net/media/upload/3/34/Black_2_EN_boxart.png
+gm-0020,Pokémon White 2,Nintendo DS,5,2012,Original,,https://archives.bulbagarden.net/media/upload/1/14/White_2_EN_boxart.png
+gm-0021,Pokémon X,Nintendo 3DS,6,2013,Original,,https://archives.bulbagarden.net/media/upload/2/27/X_EN_boxart.png
+gm-0022,Pokémon Y,Nintendo 3DS,6,2013,Original,,https://archives.bulbagarden.net/media/upload/4/41/Y_EN_boxart.png
+gm-0023,Pokémon Omega Ruby,Nintendo 3DS,6,2014,Remake,Remake of Ruby,https://archives.bulbagarden.net/media/upload/5/5b/Omega_Ruby_EN_boxart.png
+gm-0024,Pokémon Alpha Sapphire,Nintendo 3DS,6,2014,Remake,Remake of Sapphire,https://archives.bulbagarden.net/media/upload/f/f2/Alpha_Sapphire_EN_boxart.png
+gm-0025,Pokémon Sun,Nintendo 3DS,7,2016,Original,,https://archives.bulbagarden.net/media/upload/0/06/Sun_EN_boxart.png
+gm-0026,Pokémon Moon,Nintendo 3DS,7,2016,Original,,https://archives.bulbagarden.net/media/upload/3/38/Moon_EN_boxart.png
+gm-0027,Pokémon Ultra Sun,Nintendo 3DS,7,2017,Original,,https://archives.bulbagarden.net/media/upload/d/de/Ultra_Sun_EN_boxart.png
+gm-0028,Pokémon Ultra Moon,Nintendo 3DS,7,2017,Original,,https://archives.bulbagarden.net/media/upload/8/86/Ultra_Moon_EN_boxart.png
+gm-0029,"Pokémon: Let's Go, Pikachu!",Nintendo Switch,7,2018,Remake,Reimagining of Yellow,https://archives.bulbagarden.net/media/upload/a/ae/Lets_Go_Pikachu_EN_boxart.png
+gm-0030,"Pokémon: Let's Go, Eevee!",Nintendo Switch,7,2018,Remake,Reimagining of Yellow,https://archives.bulbagarden.net/media/upload/1/1e/Lets_Go_Eevee_EN_boxart.png
+gm-0031,Pokémon Sword,Nintendo Switch,8,2019,Original,,https://archives.bulbagarden.net/media/upload/4/47/Sword_EN_boxart.png
+gm-0032,Pokémon Shield,Nintendo Switch,8,2019,Original,,https://archives.bulbagarden.net/media/upload/8/8d/Shield_EN_boxart.png
+gm-0033,Pokémon Brilliant Diamond,Nintendo Switch,8,2021,Remake,Remake of Diamond,https://archives.bulbagarden.net/media/upload/3/33/Brilliant_Diamond_EN_boxart.png
+gm-0034,Pokémon Shining Pearl,Nintendo Switch,8,2021,Remake,Remake of Pearl,https://archives.bulbagarden.net/media/upload/f/fa/Shining_Pearl_EN_boxart.png
+gm-0035,Pokémon Legends: Arceus,Nintendo Switch,8,2022,Original,Main-series Legends title,https://archives.bulbagarden.net/media/upload/3/3a/Legends_Arceus_EN_boxart.png
+gm-0036,Pokémon Scarlet,Nintendo Switch,9,2022,Original,,https://archives.bulbagarden.net/media/upload/5/5f/Scarlet_EN_boxart.png
+gm-0037,Pokémon Violet,Nintendo Switch,9,2022,Original,,https://archives.bulbagarden.net/media/upload/1/13/Violet_EN_boxart.png
+gm-0038,Pokémon Legends: Z-A,Nintendo Switch,9,2025,Original,Main-series Legends title,https://archives.bulbagarden.net/media/upload/7/7a/Legends_Z-A_EN_boxart.png
