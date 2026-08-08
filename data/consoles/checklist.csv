@@ -1,0 +1,28 @@
+id,name,family,form,year,notes
+nc-0001,Nintendo Entertainment System,NES,Home,1985,NES-001
+nc-0002,Super Nintendo Entertainment System,SNES,Home,1991,SNS-001
+nc-0003,Virtual Boy,Virtual Boy,Home,1995,Tabletop stereoscopic system
+nc-0004,Nintendo 64,Nintendo 64,Home,1996,
+nc-0005,GameCube,GameCube,Home,2001,
+nc-0006,Wii,Wii,Home,2006,
+nc-0007,Wii U,Wii U,Home,2012,
+nc-0008,Nintendo Switch,Switch,Hybrid,2017,Original Switch model
+nc-0009,Nintendo Switch Lite,Switch,Hybrid,2019,Handheld-focused Switch
+nc-0010,Nintendo Switch – OLED Model,Switch,Hybrid,2021,OLED revision
+nc-0011,Nintendo Switch 2,Switch 2,Hybrid,2025,
+nc-0012,Game Boy,Game Boy,Handheld,1989,Original DMG
+nc-0013,Game Boy Pocket,Game Boy,Handheld,1996,
+nc-0014,Game Boy Color,Game Boy,Handheld,1998,
+nc-0015,Game Boy Advance,Game Boy Advance,Handheld,2001,
+nc-0016,Game Boy Advance SP,Game Boy Advance,Handheld,2003,
+nc-0017,Game Boy Micro,Game Boy Advance,Handheld,2005,
+nc-0018,Nintendo DS,Nintendo DS,Handheld,2004,Original DS (phat)
+nc-0019,Nintendo DS Lite,Nintendo DS,Handheld,2006,
+nc-0020,Nintendo DSi,Nintendo DS,Handheld,2009,
+nc-0021,Nintendo DSi XL,Nintendo DS,Handheld,2010,
+nc-0022,Nintendo 3DS,Nintendo 3DS,Handheld,2011,
+nc-0023,Nintendo 3DS XL,Nintendo 3DS,Handheld,2012,
+nc-0024,Nintendo 2DS,Nintendo 3DS,Handheld,2013,
+nc-0025,New Nintendo 3DS,Nintendo 3DS,Handheld,2015,Limited US retail release
+nc-0026,New Nintendo 3DS XL,Nintendo 3DS,Handheld,2015,
+nc-0027,New Nintendo 2DS XL,Nintendo 3DS,Handheld,2017,
