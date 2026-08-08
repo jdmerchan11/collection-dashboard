@@ -52,12 +52,14 @@ Commit and push. After Pages rebuilds, those items show as **Owned**.
 | --- | --- |
 | `data/pikachu/checklist.csv` | Priced English Pikachu card checklist |
 | `data/pikachu/owned.csv` | Owned Pikachu card ids (empty to start) |
-| `data/games/checklist.csv` | Mainline Pokémon games checklist |
+| `data/games/checklist.csv` | Mainline Pokémon games checklist (with box art URLs) |
 | `data/games/owned.csv` | Owned game ids (empty to start) |
-| `data/consoles/checklist.csv` | US Nintendo consoles checklist |
+| `data/consoles/checklist.csv` | US Nintendo consoles checklist (with photo URLs) |
 | `data/consoles/owned.csv` | Owned console ids (empty to start) |
 
 Pikachu checklist source: [Ultimate English Pikachu Checklist (Elite Fourum)](https://www.elitefourum.com/t/ultimate-english-pikachu-checklist-w-pictures-prices-free-to-use/61249).
+
+Game box art images are loaded from [Bulbagarden Archives](https://archives.bulbagarden.net/). Console photos are loaded from [Wikimedia Commons](https://commons.wikimedia.org/).
 
 ## Local preview
 
