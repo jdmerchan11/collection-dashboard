@@ -1,51 +1,25 @@
-const PROXY_BUILDERS = [
-  (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-  (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-];
-
-async function fetchJson(url, { proxy = false } = {}) {
-  if (!proxy) {
-    const response = await fetch(url, { cache: "no-store" });
-    if (!response.ok) throw new Error(`Request failed (${response.status})`);
-    return response.json();
-  }
-
-  let lastError;
-  for (const build of PROXY_BUILDERS) {
-    try {
-      const response = await fetch(build(url), { cache: "no-store" });
-      if (!response.ok) throw new Error(`Request failed (${response.status})`);
-      return response.json();
-    } catch (error) {
-      lastError = error;
-    }
-  }
-  throw lastError || new Error("Proxy fetch failed");
-}
-
 export async function loadPriceBook(path) {
-  const data = await fetchJson(path);
+  const response = await fetch(path, { cache: "no-store" });
+  if (!response.ok) throw new Error(`Request failed (${response.status})`);
+  const data = await response.json();
   return {
     updatedAt: data.updated_at || "",
-    source: data.source || "TCGPlayer",
+    source: data.source || "PriceCharting",
+    cards: data.cards || {},
+    // Legacy TCGPlayer shape (ignored by current UI).
     products: data.products || {},
   };
 }
 
-export function latestMarket(product) {
-  if (!product) return null;
-  if (product.market != null && Number.isFinite(Number(product.market))) {
-    return Number(product.market);
+export function latestMarket(entry) {
+  if (!entry) return null;
+  if (entry.market != null && Number.isFinite(Number(entry.market))) {
+    return Number(entry.market);
   }
-  const variants = product.variants || {};
-  for (const key of ["Normal", "Holofoil", "Foil", "1st Edition", "Unlimited"]) {
-    const value = variants[key]?.market;
+  const history = entry.history || [];
+  for (let i = history.length - 1; i >= 0; i -= 1) {
+    const value = history[i]?.market;
     if (value != null && Number.isFinite(Number(value))) return Number(value);
-  }
-  for (const variant of Object.values(variants)) {
-    if (variant?.market != null && Number.isFinite(Number(variant.market))) {
-      return Number(variant.market);
-    }
   }
   return null;
 }
@@ -54,80 +28,15 @@ function sortAscendingByDate(points) {
   return [...points].sort((a, b) => String(a.date).localeCompare(String(b.date)));
 }
 
-export function historySeries(product, preferredVariant = "Normal") {
-  const history = product?.history || [];
-  const byVariant = new Map();
-  history.forEach((point) => {
-    const variant = point.variant || "Normal";
-    if (!byVariant.has(variant)) byVariant.set(variant, []);
-    if (point.market != null) {
-      byVariant.get(variant).push({
-        date: point.date,
-        market: Number(point.market),
-        avgSales: point.avg_sales != null ? Number(point.avg_sales) : null,
-        quantity: point.quantity || 0,
-      });
-    }
-  });
-
-  let series = [];
-  if (byVariant.has(preferredVariant)) series = byVariant.get(preferredVariant);
-  else if (byVariant.size) series = [...byVariant.values()].sort((a, b) => b.length - a.length)[0];
+export function historySeries(entry) {
+  const history = entry?.history || [];
+  const series = history
+    .filter((point) => point?.market != null && Number.isFinite(Number(point.market)))
+    .map((point) => ({
+      date: point.date,
+      market: Number(point.market),
+    }));
   return sortAscendingByDate(series);
-}
-
-/** Live refresh from TCGPlayer public endpoints (via CORS proxy). */
-export async function fetchLiveProduct(productId) {
-  const id = String(productId);
-  const priceUrl = `https://mpapi.tcgplayer.com/v2/product/${id}/pricepoints`;
-  const historyUrl = `https://infinite-api.tcgplayer.com/price/history/${id}?range=quarter`;
-
-  const [points, hist] = await Promise.all([
-    fetchJson(priceUrl, { proxy: true }),
-    fetchJson(historyUrl, { proxy: true }),
-  ]);
-
-  const variants = {};
-  let market = null;
-  for (const point of points || []) {
-    const printing = point.printingType || "Normal";
-    variants[printing] = {
-      market: point.marketPrice,
-      listed_median: point.listedMedianPrice,
-      buylist_market: point.buylistMarketPrice,
-    };
-    if (market == null && point.marketPrice != null) market = point.marketPrice;
-  }
-
-  const history = [];
-  for (const day of hist?.result || []) {
-    for (const variant of day.variants || []) {
-      history.push({
-        date: day.date,
-        variant: variant.variant || "Normal",
-        market:
-          variant.marketPrice != null && variant.marketPrice !== ""
-            ? Number(variant.marketPrice)
-            : null,
-        avg_sales:
-          variant.averageSalesPrice != null && variant.averageSalesPrice !== ""
-            ? Number(variant.averageSalesPrice)
-            : null,
-        quantity:
-          variant.quantity != null && variant.quantity !== ""
-            ? Number(variant.quantity)
-            : 0,
-      });
-    }
-  }
-
-  return {
-    market,
-    variants,
-    history,
-    live: true,
-    fetchedAt: new Date().toISOString(),
-  };
 }
 
 function ensureChartTooltip(canvas) {
@@ -163,7 +72,6 @@ export function drawHistoryChart(canvas, series) {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, width, height);
 
-  // Drop previous interaction handlers when redrawing.
   if (canvas._chartCleanup) {
     canvas._chartCleanup();
     canvas._chartCleanup = null;
@@ -282,7 +190,6 @@ export function drawHistoryChart(canvas, series) {
         best = index;
       }
     });
-    // Ignore hovers far outside the plot area.
     if (x < pad.left - 12 || x > width - pad.right + 12) return -1;
     return best;
   }

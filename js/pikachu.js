@@ -1,7 +1,6 @@
 import { createCollectionApp, money } from "./collection-app.js";
 import {
   drawHistoryChart,
-  fetchLiveProduct,
   historySeries,
   latestMarket,
   loadPriceBook,
@@ -9,7 +8,8 @@ import {
 
 const priceBook = {
   updatedAt: "",
-  products: {},
+  source: "PriceCharting",
+  cards: {},
 };
 
 const modal = {
@@ -26,14 +26,13 @@ const modal = {
   status: document.getElementById("modal-status"),
 };
 
-function productFor(item) {
-  const pid = item.tcgplayer_product_id;
-  if (!pid) return null;
-  return priceBook.products[pid] || null;
+function entryFor(item) {
+  if (!item?.id) return null;
+  return priceBook.cards[item.id] || null;
 }
 
 function priceValue(item) {
-  const live = latestMarket(productFor(item));
+  const live = latestMarket(entryFor(item));
   if (live != null) return live;
   const fallback = Number(item.market_price);
   return Number.isFinite(fallback) ? fallback : null;
@@ -48,11 +47,11 @@ function setPriceUpdatedLabel() {
   const el = document.getElementById("price-updated");
   if (!el) return;
   if (!priceBook.updatedAt) {
-    el.textContent = "TCGPlayer prices unavailable";
+    el.textContent = "PriceCharting prices unavailable";
     return;
   }
   const date = new Date(priceBook.updatedAt);
-  el.textContent = `TCGPlayer market · updated ${date.toLocaleString()}`;
+  el.textContent = `PriceCharting ungraded · updated ${date.toLocaleString()}`;
 }
 
 function closeModal() {
@@ -106,7 +105,8 @@ const app = createCollectionApp({
     try {
       const book = await loadPriceBook("../data/pikachu/prices.json");
       priceBook.updatedAt = book.updatedAt;
-      priceBook.products = book.products;
+      priceBook.source = book.source || "PriceCharting";
+      priceBook.cards = book.cards;
       setPriceUpdatedLabel();
     } catch (error) {
       console.warn("Price book unavailable", error);
@@ -146,53 +146,35 @@ function openModal(item) {
   modal.image.src = item.image_url || "";
   modal.image.alt = item.display_name || item.name;
   modal.price.textContent = priceText(item);
-  const cached = productFor(item);
-  modal.priceNote.textContent = item.tcgplayer_product_id
-    ? priceBook.updatedAt
-      ? `TCGPlayer market · refreshing live… (snapshot ${new Date(
-          priceBook.updatedAt
-        ).toLocaleString()})`
-      : "Loading latest TCGPlayer market price…"
-    : "No TCGPlayer product mapping for this variant.";
-  if (item.tcgplayer_url) {
-    modal.link.href = item.tcgplayer_url;
+
+  const cached = entryFor(item);
+  if (item.pricecharting_url) {
+    modal.priceNote.textContent = priceBook.updatedAt
+      ? `PriceCharting ungraded · snapshot ${new Date(priceBook.updatedAt).toLocaleString()}`
+      : "PriceCharting ungraded market price";
+  } else {
+    modal.priceNote.textContent = "No PriceCharting listing mapped for this variant.";
+  }
+
+  const href = item.pricecharting_url || item.tcgplayer_url;
+  if (href) {
+    modal.link.href = href;
+    modal.link.textContent = item.pricecharting_url
+      ? "View on PriceCharting"
+      : "View on TCGPlayer";
     modal.link.hidden = false;
   } else {
     modal.link.hidden = true;
   }
+
   modal.status.textContent = cached?.history?.length
-    ? "Chart shows saved TCGPlayer market history."
-    : "";
+    ? "Chart shows PriceCharting ungraded history."
+    : item.pricecharting_url
+      ? "No historic PriceCharting data for this listing yet."
+      : "";
   modal.root.classList.remove("hidden");
   document.body.classList.add("modal-open");
   drawHistoryChart(modal.chart, historySeries(cached));
-
-  if (!item.tcgplayer_product_id) return;
-
-  fetchLiveProduct(item.tcgplayer_product_id)
-    .then((liveProduct) => {
-      priceBook.products[item.tcgplayer_product_id] = {
-        ...(priceBook.products[item.tcgplayer_product_id] || {}),
-        ...liveProduct,
-      };
-      const market = latestMarket(liveProduct);
-      modal.price.textContent = market != null ? money(market) : priceText(item);
-      modal.priceNote.textContent = `Live TCGPlayer market · ${new Date(
-        liveProduct.fetchedAt
-      ).toLocaleString()}`;
-      drawHistoryChart(modal.chart, historySeries(liveProduct));
-      modal.status.textContent = "Chart shows recent TCGPlayer market history.";
-      app.render();
-      app.updateProgress();
-    })
-    .catch((error) => {
-      console.warn(error);
-      modal.priceNote.textContent = priceBook.updatedAt
-        ? `TCGPlayer market · snapshot ${new Date(priceBook.updatedAt).toLocaleString()}`
-        : "Could not refresh live price; showing checklist value.";
-      modal.status.textContent =
-        "Live refresh unavailable right now; showing saved TCGPlayer snapshot.";
-    });
 }
 
 modal.closeEls.forEach((el) => el.addEventListener("click", closeModal));
