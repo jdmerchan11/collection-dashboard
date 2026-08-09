@@ -51,7 +51,7 @@ Commit and push. After Pages rebuilds, those items show as **Owned**.
 
 | File | Purpose |
 | --- | --- |
-| `data/pikachu/checklist.csv` | Pikachu checklist + TCGPlayer product ids |
+| `data/pikachu/checklist.csv` | Pikachu checklist with consistent names, set/number fields, and TCGPlayer product ids |
 | `data/pikachu/prices.json` | TCGPlayer market snapshots + history |
 | `data/pikachu/owned.csv` | Owned Pikachu card ids (empty to start) |
 | `data/games/checklist.csv` | Mainline Pokémon games checklist |
