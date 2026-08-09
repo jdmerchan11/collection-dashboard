@@ -6,7 +6,7 @@
     <title>Pikachu Collection — Collection</title>
     <meta
       name="description"
-      content="Track English Pikachu Pokémon TCG cards with live TCGPlayer market prices."
+      content="Track English Pikachu Pokémon TCG cards with PriceCharting ungraded market prices."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,11 +25,11 @@
         <p class="brand">Pikachu Collection</p>
         <h1>Card checklist</h1>
         <p class="lede">
-          English Pikachu cards with live TCGPlayer market prices. Tap a card for a
-          larger view and historic pricing. Ownership loads from
+          English Pikachu cards with PriceCharting ungraded market prices. Tap a card
+          for a larger view and historic pricing. Ownership loads from
           <code>data/pikachu/owned.csv</code>.
         </p>
-        <p class="price-updated" id="price-updated">Loading TCGPlayer prices…</p>
+        <p class="price-updated" id="price-updated">Loading PriceCharting prices…</p>
       </div>
 
       <div class="progress-panel" aria-live="polite">
@@ -106,7 +106,7 @@
           rel="noopener noreferrer"
           >Priced Pikachu Checklist</a
         >.
-        Market prices from TCGPlayer. Mark ownership in <code>data/pikachu/owned.csv</code>.
+        Market prices from PriceCharting. Mark ownership in <code>data/pikachu/owned.csv</code>.
       </p>
     </footer>
 
@@ -124,7 +124,7 @@
             <p id="modal-price" class="modal-price">—</p>
             <p id="modal-price-note" class="card-meta"></p>
             <a id="modal-tcg-link" class="modal-link" href="#" target="_blank" rel="noopener noreferrer"
-              >View on TCGPlayer</a
+              >View on PriceCharting</a
             >
             <div class="chart-wrap">
               <canvas id="price-chart" width="640" height="220" aria-label="Historic price chart"></canvas>

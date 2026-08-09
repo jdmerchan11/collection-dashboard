@@ -2,7 +2,7 @@
 
 A static GitHub Pages site for tracking three collections from one homepage:
 
-1. **Pikachu cards** — English Pikachu TCG checklist with live TCGPlayer market prices
+1. **Pikachu cards** — English Pikachu TCG checklist with PriceCharting ungraded market prices
 2. **Vintage games** — mainline Pokémon games from Game Boy onward (including remakes)
 3. **Vintage consoles** — Nintendo home, hybrid, and handheld systems sold in the US
 
@@ -27,9 +27,10 @@ Ownership for each section is read from its own CSV. Those owned files are initi
 
 ## Pikachu prices
 
-- Grid prices come from TCGPlayer market data stored in `data/pikachu/prices.json`
-- Opening a card refreshes the latest TCGPlayer market price and shows recent historic market data
-- A daily GitHub Action (`.github/workflows/refresh-pikachu-prices.yml`) can refresh the snapshot
+- Grid prices come from PriceCharting ungraded market data stored in `data/pikachu/prices.json`, keyed by checklist card id
+- Each variant maps to a `pricecharting_url` so shared TCGPlayer product ids no longer collapse distinct printings into one price
+- Opening a card shows the saved PriceCharting market price and ungraded history chart
+- A daily GitHub Action (`.github/workflows/refresh-pikachu-prices.yml`) refreshes the snapshot
 - Manual refresh:
 
 ```bash
@@ -51,8 +52,8 @@ Commit and push. After Pages rebuilds, those items show as **Owned**.
 
 | File | Purpose |
 | --- | --- |
-| `data/pikachu/checklist.csv` | Pikachu checklist with consistent names, set/number fields, and TCGPlayer product ids |
-| `data/pikachu/prices.json` | TCGPlayer market snapshots + history |
+| `data/pikachu/checklist.csv` | Pikachu checklist with PriceCharting listing URLs and optional TCGPlayer ids |
+| `data/pikachu/prices.json` | PriceCharting ungraded market snapshots + history by card id |
 | `data/pikachu/owned.csv` | Owned Pikachu card ids (empty to start) |
 | `data/games/checklist.csv` | Mainline Pokémon games checklist |
 | `data/games/owned.csv` | Owned game ids (empty to start) |
