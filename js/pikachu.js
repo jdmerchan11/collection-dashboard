@@ -61,12 +61,26 @@ function closeModal() {
   modal.image.src = "";
 }
 
+function setNumberLabel(item) {
+  return [item.set_name, item.number].filter(Boolean).join(" ");
+}
+
 const app = createCollectionApp({
   checklistPath: "../data/pikachu/checklist.csv",
   ownedPath: "../data/pikachu/owned.csv",
   itemNoun: "card",
-  titleField: "set",
-  searchFields: ["set", "edition", "year", "remarks", "rarity", "artwork"],
+  titleField: "name",
+  searchFields: [
+    "name",
+    "display_name",
+    "set_name",
+    "number",
+    "edition",
+    "year",
+    "remarks",
+    "rarity",
+    "artwork",
+  ],
   showOwnedValue: true,
   mediaClass: "media-card",
   clickable: true,
@@ -81,9 +95,10 @@ const app = createCollectionApp({
     { value: "price-asc", label: "Price: low to high" },
     { value: "year-desc", label: "Year: newest" },
     { value: "year-asc", label: "Year: oldest" },
+    { value: "name", label: "Card name" },
     { value: "set", label: "Set name" },
   ],
-  metaBits: (item) => [item.year, item.edition, item.rarity],
+  metaBits: (item) => [setNumberLabel(item), item.year, item.edition, item.rarity],
   detailText: (item) => item.remarks || "",
   priceText,
   priceValue,
@@ -107,11 +122,13 @@ const app = createCollectionApp({
       case "price-asc":
         return price(a) - price(b);
       case "year-desc":
-        return year(b) - year(a) || a.set.localeCompare(b.set);
+        return year(b) - year(a) || a.display_name.localeCompare(b.display_name);
       case "year-asc":
-        return year(a) - year(b) || a.set.localeCompare(b.set);
+        return year(a) - year(b) || a.display_name.localeCompare(b.display_name);
+      case "name":
+        return a.name.localeCompare(b.name) || setNumberLabel(a).localeCompare(setNumberLabel(b));
       case "set":
-        return a.set.localeCompare(b.set) || a.id.localeCompare(b.id);
+        return a.set_name.localeCompare(b.set_name) || a.number.localeCompare(b.number);
       default:
         return 0;
     }
@@ -120,12 +137,14 @@ const app = createCollectionApp({
 
 function openModal(item) {
   if (!modal.root) return;
-  modal.title.textContent = item.set;
-  modal.meta.textContent = [item.year, item.edition, item.rarity].filter(Boolean).join(" · ");
+  modal.title.textContent = item.name;
+  modal.meta.textContent = [setNumberLabel(item), item.year, item.edition, item.rarity]
+    .filter(Boolean)
+    .join(" · ");
   modal.remarks.textContent = item.remarks || "";
   modal.remarks.hidden = !item.remarks;
   modal.image.src = item.image_url || "";
-  modal.image.alt = item.set;
+  modal.image.alt = item.display_name || item.name;
   modal.price.textContent = priceText(item);
   const cached = productFor(item);
   modal.priceNote.textContent = item.tcgplayer_product_id
