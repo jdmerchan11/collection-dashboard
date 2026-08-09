@@ -6,7 +6,7 @@
     <title>Pikachu Collection — Collection</title>
     <meta
       name="description"
-      content="Track English Pikachu Pokémon TCG cards against the priced checklist."
+      content="Track English Pikachu Pokémon TCG cards with live TCGPlayer market prices."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,9 +25,11 @@
         <p class="brand">Pikachu Collection</p>
         <h1>Card checklist</h1>
         <p class="lede">
-          English Pikachu cards from the priced checklist. Owned status loads from
+          English Pikachu cards with live TCGPlayer market prices. Tap a card for a
+          larger view and historic pricing. Ownership loads from
           <code>data/pikachu/owned.csv</code>.
         </p>
+        <p class="price-updated" id="price-updated">Loading TCGPlayer prices…</p>
       </div>
 
       <div class="progress-panel" aria-live="polite">
@@ -104,9 +106,34 @@
           rel="noopener noreferrer"
           >Priced Pikachu Checklist</a
         >.
-        Mark ownership in <code>data/pikachu/owned.csv</code>.
+        Market prices from TCGPlayer. Mark ownership in <code>data/pikachu/owned.csv</code>.
       </p>
     </footer>
+
+    <div id="card-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-dialog">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+        <div class="modal-layout">
+          <div class="modal-media">
+            <img id="modal-image" alt="" />
+          </div>
+          <div class="modal-copy">
+            <h2 id="modal-title">Card</h2>
+            <p id="modal-meta" class="card-meta"></p>
+            <p id="modal-remarks" class="card-meta"></p>
+            <p id="modal-price" class="modal-price">—</p>
+            <p id="modal-price-note" class="card-meta"></p>
+            <a id="modal-tcg-link" class="modal-link" href="#" target="_blank" rel="noopener noreferrer"
+              >View on TCGPlayer</a
+            >
+            <div class="chart-wrap">
+              <canvas id="price-chart" width="640" height="220" aria-label="Historic price chart"></canvas>
+            </div>
+            <p id="modal-status" class="card-meta"></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script type="module">
       import { mountSiteNav } from "../js/site-nav.js";

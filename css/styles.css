@@ -36,12 +36,12 @@ body.theme-consoles {
 }
 
 body.theme-home {
-  --paper: #f7f3e7;
-  --paper-deep: #e7dfc8;
-  --accent: #c9a227;
-  --accent-deep: #8a6a12;
-  --hero-tint: rgba(201, 162, 39, 0.3);
-  --hero-tint-2: rgba(40, 55, 48, 0.18);
+  --paper: #efe6d4;
+  --paper-deep: #ddd0b6;
+  --accent: #2f6f8f;
+  --accent-deep: #1f4f6b;
+  --hero-tint: rgba(47, 111, 143, 0.22);
+  --hero-tint-2: rgba(176, 120, 48, 0.18);
 }
 
 *,
@@ -102,6 +102,30 @@ main,
   justify-content: space-between;
   gap: 0.75rem 1.25rem;
   animation: rise 0.55s ease-out both;
+}
+
+@media (max-width: 640px) {
+  [data-site-nav] {
+    width: min(1180px, calc(100% - 1.25rem));
+    padding-top: 0.75rem;
+  }
+
+  .site-nav {
+    gap: 0.55rem;
+  }
+
+  .site-nav-links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.3rem;
+  }
+
+  .site-nav-link {
+    text-align: center;
+    padding: 0.55rem 0.2rem;
+    font-size: 0.82rem;
+  }
 }
 
 .site-nav-brand {
@@ -182,6 +206,64 @@ main,
   font-size: clamp(1.2rem, 2.4vw, 1.7rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.price-updated {
+  margin: 0.65rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .site-header,
+  .controls,
+  .results-count,
+  main,
+  .site-footer {
+    width: min(1180px, calc(100% - 1.25rem));
+  }
+
+  .site-header {
+    padding-top: 1.1rem;
+  }
+
+  .brand {
+    font-size: clamp(2.1rem, 12vw, 3.2rem);
+  }
+
+  .stat-value {
+    font-size: 1.15rem;
+  }
+
+  .card-grid,
+  .card-grid-wide {
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .card {
+    padding: 0.6rem;
+  }
+
+  .home-hero {
+    min-height: calc(100svh - 5.5rem);
+    padding: 1.25rem 0 2rem;
+    align-items: flex-end;
+  }
+
+  .home-hero-copy {
+    max-width: none;
+  }
+
+  .home-cta-group {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .home-cta {
+    width: 100%;
+  }
 }
 
 .lede {
@@ -352,6 +434,15 @@ main,
   transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: color-mix(in srgb, var(--accent-deep) 40%, transparent);
+}
+
+.card.is-clickable {
+  cursor: pointer;
+}
+
+.card.is-clickable:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  outline-offset: 2px;
 }
 
 .card.is-owned {
@@ -595,6 +686,120 @@ body.page-home {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
   border-color: var(--accent-deep);
+}
+
+/* Card detail modal */
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(20, 18, 14, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.modal.hidden {
+  display: none !important;
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: min(980px, 100%);
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  border: 1px solid rgba(255, 248, 232, 0.25);
+  border-radius: 22px;
+  background: #fffdf8;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  padding: 1rem;
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(28, 25, 20, 0.08);
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-layout {
+  display: grid;
+  gap: 1rem;
+  clear: both;
+}
+
+@media (min-width: 800px) {
+  .modal-layout {
+    grid-template-columns: minmax(220px, 0.9fr) 1.2fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+}
+
+.modal-media {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #efe4c8;
+}
+
+.modal-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(70vh, 560px);
+  object-fit: contain;
+  background: #efe4c8;
+}
+
+.modal-copy h2 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  letter-spacing: -0.02em;
+}
+
+.modal-price {
+  margin: 0.55rem 0 0.15rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.modal-link {
+  display: inline-flex;
+  margin: 0.55rem 0 0.85rem;
+  color: var(--accent-deep);
+  font-weight: 700;
+}
+
+.chart-wrap {
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fffaf0;
+  padding: 0.4rem;
+}
+
+.chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 
 @keyframes rise {
