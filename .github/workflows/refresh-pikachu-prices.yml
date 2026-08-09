@@ -1,0 +1,31 @@
+name: Refresh Pikachu TCGPlayer prices
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch latest TCGPlayer snapshots
+        run: python3 scripts/refresh_pikachu_prices.py
+      - name: Commit price updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pikachu/prices.json data/pikachu/checklist.csv
+          if git diff --staged --quiet; then
+            echo "No price changes"
+          else
+            git commit -m "Refresh Pikachu TCGPlayer market prices"
+            git push
+          fi

@@ -45,8 +45,12 @@ function el(id) {
  * @param {(item:object)=>string[]} config.metaBits
  * @param {(item:object)=>string} [config.detailText]
  * @param {(item:object)=>string} [config.priceText]
+ * @param {(item:object)=>number|null} [config.priceValue]
  * @param {boolean} [config.showOwnedValue]
  * @param {string} [config.mediaClass]
+ * @param {boolean} [config.clickable]
+ * @param {(item:object)=>void} [config.onItemClick]
+ * @param {()=>Promise<void>} [config.beforeRender]
  * @param {(a:object,b:object,mode:string)=>number} [config.compare]
  */
 export function createCollectionApp(config) {
@@ -93,7 +97,11 @@ export function createCollectionApp(config) {
     if (config.showOwnedValue && els.statValue) {
       const ownedValue = state.items
         .filter((item) => state.ownedIds.has(item.id))
-        .reduce((sum, item) => sum + (Number(item.market_price) || 0), 0);
+        .reduce((sum, item) => {
+          const live = config.priceValue?.(item);
+          const value = live != null ? live : Number(item.market_price) || 0;
+          return sum + value;
+        }, 0);
       els.statValue.textContent = money(ownedValue);
       els.valueStat?.classList.remove("hidden");
     } else {
@@ -153,8 +161,24 @@ export function createCollectionApp(config) {
     filtered.forEach((item, index) => {
       const owned = state.ownedIds.has(item.id);
       const article = document.createElement("article");
-      article.className = `card${owned ? " is-owned" : ""}`;
+      article.className = `card${owned ? " is-owned" : ""}${config.clickable ? " is-clickable" : ""}`;
       article.style.animationDelay = `${Math.min(index, 24) * 18}ms`;
+      if (config.clickable) {
+        article.tabIndex = 0;
+        article.setAttribute("role", "button");
+        article.setAttribute(
+          "aria-label",
+          `Open details for ${item[config.titleField] || config.itemNoun}`
+        );
+        const open = () => config.onItemClick?.(item);
+        article.addEventListener("click", open);
+        article.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            open();
+          }
+        });
+      }
 
       const media = document.createElement("div");
       media.className = `card-media ${config.mediaClass || ""}`.trim();
@@ -252,6 +276,10 @@ export function createCollectionApp(config) {
         loadCsv(config.ownedPath),
       ]);
 
+      if (config.beforeRender) {
+        await config.beforeRender();
+      }
+
       state.items = checklistRows;
       state.ownedIds = new Set(
         ownedRows
@@ -297,7 +325,14 @@ export function createCollectionApp(config) {
   }
 
   bindControls();
-  init();
+  const ready = init();
+
+  return {
+    ready,
+    render,
+    updateProgress,
+    getItems: () => state.items,
+  };
 }
 
 export { money };
