@@ -1,6 +1,20 @@
 import { createCollectionApp } from "./collection-app.js";
+import { bindModalChrome, setModalNotes } from "./item-modal.js";
 
-createCollectionApp({
+const modal = {
+  root: document.getElementById("item-modal"),
+  image: document.getElementById("modal-image"),
+  title: document.getElementById("modal-title"),
+  meta: document.getElementById("modal-meta"),
+  detail: document.getElementById("modal-detail"),
+  notesLabel: document.getElementById("modal-notes-label"),
+  notes: document.getElementById("modal-notes"),
+  owned: document.getElementById("modal-owned"),
+};
+
+bindModalChrome(modal.root);
+
+const app = createCollectionApp({
   checklistPath: "../data/consoles/checklist.csv",
   ownedPath: "../data/consoles/owned.csv",
   itemNoun: "console",
@@ -8,6 +22,8 @@ createCollectionApp({
   searchFields: ["name", "family", "form", "year", "notes"],
   showOwnedValue: false,
   mediaClass: "media-wide",
+  clickable: true,
+  onItemClick: openModal,
   filters: [
     { id: "form-filter", key: "form", allLabel: "All forms", sort: "alpha" },
     { id: "family-filter", key: "family", allLabel: "All families", sort: "alpha" },
@@ -38,3 +54,21 @@ createCollectionApp({
     }
   },
 });
+
+function openModal(item) {
+  if (!modal.root) return;
+  modal.title.textContent = item.name;
+  modal.meta.textContent = [item.year, item.form, item.family].filter(Boolean).join(" · ");
+  modal.detail.textContent = item.notes || "";
+  modal.detail.hidden = !item.notes;
+  if (modal.owned) {
+    const owned = app.isOwned(item.id);
+    modal.owned.textContent = owned ? "Owned" : "Missing";
+    modal.owned.className = `status-chip ${owned ? "owned" : "missing"}`;
+  }
+  setModalNotes(modal.notes, modal.notesLabel, app.getOwnedNote(item.id));
+  modal.image.src = item.image_url || "";
+  modal.image.alt = item.name;
+  modal.root.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}

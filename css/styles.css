@@ -787,6 +787,40 @@ body.modal-open {
   font-weight: 700;
 }
 
+.modal-copy > .status-chip {
+  position: static;
+  display: inline-flex;
+  margin: 0 0 0.55rem;
+}
+
+.modal-notes-label {
+  margin: 0.85rem 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.modal-notes-label.hidden {
+  display: none !important;
+}
+
+.modal-notes {
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 248, 232, 0.7);
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+.modal-notes:empty,
+.modal-notes[hidden] {
+  display: none !important;
+}
+
 .chart-wrap {
   position: relative;
   width: 100%;

@@ -107,6 +107,25 @@
       </p>
     </footer>
 
+    <div id="item-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-dialog">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+        <div class="modal-layout">
+          <div class="modal-media">
+            <img id="modal-image" alt="" />
+          </div>
+          <div class="modal-copy">
+            <span id="modal-owned" class="status-chip missing">Missing</span>
+            <h2 id="modal-title">Game</h2>
+            <p id="modal-meta" class="card-meta"></p>
+            <p id="modal-detail" class="card-meta"></p>
+            <p id="modal-notes-label" class="modal-notes-label hidden">Collection notes</p>
+            <p id="modal-notes" class="modal-notes"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="module">
       import { mountSiteNav } from "../js/site-nav.js";
       import "../js/games.js";

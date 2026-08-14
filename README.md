@@ -46,6 +46,8 @@ id,notes
 pk-0001,Binder page 1
 ```
 
+The optional `notes` column is free-form collection notes (condition, storage, gifts, etc.). Notes appear in the detail modal when you click an item, and are searchable.
+
 Commit and push. After Pages rebuilds, those items show as **Owned**.
 
 ## Data files

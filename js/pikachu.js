@@ -1,4 +1,5 @@
 import { createCollectionApp, money } from "./collection-app.js";
+import { bindModalChrome, setModalNotes } from "./item-modal.js";
 import {
   drawHistoryChart,
   historySeries,
@@ -14,17 +15,20 @@ const priceBook = {
 
 const modal = {
   root: document.getElementById("card-modal"),
-  closeEls: [...document.querySelectorAll("[data-close-modal]")],
   image: document.getElementById("modal-image"),
   title: document.getElementById("modal-title"),
   meta: document.getElementById("modal-meta"),
   remarks: document.getElementById("modal-remarks"),
+  notesLabel: document.getElementById("modal-notes-label"),
+  notes: document.getElementById("modal-notes"),
   price: document.getElementById("modal-price"),
   priceNote: document.getElementById("modal-price-note"),
   link: document.getElementById("modal-tcg-link"),
   chart: document.getElementById("price-chart"),
   status: document.getElementById("modal-status"),
 };
+
+const closeModal = bindModalChrome(modal.root);
 
 function entryFor(item) {
   if (!item?.id) return null;
@@ -52,12 +56,6 @@ function setPriceUpdatedLabel() {
   }
   const date = new Date(priceBook.updatedAt);
   el.textContent = `PriceCharting ungraded · updated ${date.toLocaleString()}`;
-}
-
-function closeModal() {
-  modal.root?.classList.add("hidden");
-  document.body.classList.remove("modal-open");
-  modal.image.src = "";
 }
 
 function setNumberLabel(item) {
@@ -143,6 +141,7 @@ function openModal(item) {
     .join(" · ");
   modal.remarks.textContent = item.remarks || "";
   modal.remarks.hidden = !item.remarks;
+  setModalNotes(modal.notes, modal.notesLabel, app.getOwnedNote(item.id));
   modal.image.src = item.image_url || "";
   modal.image.alt = item.display_name || item.name;
   modal.price.textContent = priceText(item);
@@ -176,11 +175,3 @@ function openModal(item) {
   document.body.classList.add("modal-open");
   drawHistoryChart(modal.chart, historySeries(cached));
 }
-
-modal.closeEls.forEach((el) => el.addEventListener("click", closeModal));
-modal.root?.addEventListener("click", (event) => {
-  if (event.target === modal.root) closeModal();
-});
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !modal.root?.classList.contains("hidden")) closeModal();
-});
