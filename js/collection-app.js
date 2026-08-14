@@ -162,7 +162,9 @@ export function createCollectionApp(config) {
     filtered.forEach((item, index) => {
       const owned = state.ownedIds.has(item.id);
       const article = document.createElement("article");
-      article.className = `card${owned ? " is-owned" : ""}${config.clickable ? " is-clickable" : ""}`;
+      article.className = `card${owned ? " is-owned" : " is-missing"}${
+        config.clickable ? " is-clickable" : ""
+      }`;
       article.style.animationDelay = `${Math.min(index, 24) * 18}ms`;
       if (config.clickable) {
         article.tabIndex = 0;
