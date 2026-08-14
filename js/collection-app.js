@@ -121,9 +121,10 @@ export function createCollectionApp(config) {
     }
 
     if (!query) return true;
+    const ownedNote = state.ownedNotes.get(item.id) || "";
     const haystack = config.searchFields
       .map((field) => item[field] || "")
-      .concat(item.id)
+      .concat(item.id, ownedNote)
       .join(" ")
       .toLowerCase();
     return haystack.includes(query);
@@ -332,6 +333,8 @@ export function createCollectionApp(config) {
     render,
     updateProgress,
     getItems: () => state.items,
+    isOwned: (id) => state.ownedIds.has(id),
+    getOwnedNote: (id) => state.ownedNotes.get(id) || "",
   };
 }
 
